@@ -4,9 +4,8 @@ import { fileURLToPath } from "node:url";
 import 'dotenv/config'
 import cors from 'cors'
 import { indexRouter } from "./routes/indexRouter.js";
-import { userRouter } from "./routes/userRouter.js";
-import { messageRouter } from "./routes/messageRouter.js";
-
+import { postRouter } from "./routes/postsRouter.js";
+import { authRouter } from "./routes/authrout.js";
 const app = express(()=>{
     console.log('booting server...')
 })
@@ -21,6 +20,7 @@ const app = express(()=>{
 //>   res.json({msg: 'Hello'})
 //> })
 //==========================================
+
 //the following 2 lines are esm specific(dirname is only implicit in common.js)
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -31,8 +31,8 @@ app.use(express.json());
 
 //router setup
 app.use('/',indexRouter);
-app.use('/users',userRouter);
-app.use('/message',messageRouter);
+app.use('/posts',postRouter);
+app.use('/auth', authRouter);
 
 //error handelling routes
 
