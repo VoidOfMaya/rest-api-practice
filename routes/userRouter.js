@@ -1,9 +1,9 @@
 import { Router } from "express";
-
+import { users, messages } from "../mockData.js";
 const userRouter = Router();
 
 userRouter.get('/', (req, res) => {
-  return res.send('GET HTTP method on user resource');
+  return res.send(Object.values(users));
 });
 
 userRouter.post('/', (req, res) => {
@@ -11,7 +11,7 @@ userRouter.post('/', (req, res) => {
 });
 
 userRouter.put('/:userId', (req, res) => {
-  return res.send(`PUT HTTP method on user/${req.params.userId} resource`);
+  return res.send(Object.values(users[req.params.userId]));
 });
 
 userRouter.delete('/:userId', (req, res) => {

@@ -5,6 +5,7 @@ import 'dotenv/config'
 
 import { indexRouter } from "./routes/indexRouter.js";
 import { userRouter } from "./routes/userRouter.js";
+import { messageRouter } from "./routes/messageRouter.js";
 
 const app = express(()=>{
     console.log('booting server...')
@@ -21,6 +22,7 @@ app.use(express.json());
 //router setup
 app.use('/',indexRouter);
 app.use('/users',userRouter);
+app.use('/message',messageRouter);
 
 //error handelling routes
 
