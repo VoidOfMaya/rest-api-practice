@@ -3,7 +3,8 @@ import path from 'node:path';
 import { fileURLToPath } from "node:url";
 import 'dotenv/config'
 
-import { indexRoutrer } from "./index/indexRouter.js";
+import { indexRouter } from "./routes/indexRouter.js";
+import { userRouter } from "./routes/userRouter.js";
 
 const app = express(()=>{
     console.log('booting server...')
@@ -18,7 +19,8 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
 //router setup
-app.use('/',indexRoutrer)
+app.use('/',indexRouter);
+app.use('/users',userRouter);
 
 //error handelling routes
 
